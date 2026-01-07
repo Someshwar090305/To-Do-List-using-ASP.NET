@@ -1,0 +1,26 @@
+# --- Build Output (These are generated automatically) ---
+[Bb]in/
+[Oo]bj/
+
+# --- Database Files (Don't commit your local data!) ---
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+
+# --- IDE & Editor Settings (User-specific preferences) ---
+.vscode/
+.vs/
+*.suo
+*.user
+*.userprefs
+
+# --- OS Generated Files ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log

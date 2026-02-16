@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Secure Todo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="theme-toggle" onclick="toggleTheme()" id="theme-btn">🌙</div>
+
+    <div id="auth-section">
+        <div class="auth-wrapper">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1 id="auth-title">Welcome Back</h1>
+                    <p class="subtitle">Sign in to manage your tasks</p>
+                </div>
+                <div id="auth-error" class="error"></div>
+                <form onsubmit="event.preventDefault(); handleAuth();">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" id="auth-btn">Login</button>
+                </form>
+                <div class="link" onclick="toggleAuthMode()" id="auth-toggle">Need an account? Register</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-section" style="display: none;">
+        <div class="main-container">
+            <div class="app-header">
+                <div class="header-left">
+                    <h1>My Tasks</h1>
+                    <p>Stay organized and productive</p>
+                </div>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+
+            <div class="actions-section">
+                <div class="search-wrapper">
+                    <input type="text" id="search" placeholder="Search your tasks..." onkeyup="filterTasks()">
+                </div>
+                <div class="add-task-wrapper">
+                    <input type="text" id="new-task" placeholder="What do you need to do?">
+                    <button onclick="addTask()">Add Task</button>
+                </div>
+            </div>
+
+            <div class="todo-grid" id="todo-list"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+
+
+</body>
+
+</html>

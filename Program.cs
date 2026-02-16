@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using MyFirstApi.Data;
+using MyFirstApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,23 +42,17 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwaggerUI();
 }
 
-// 2. ENABLE CORS (Must be before Auth) <-- THIS WAS MISSING
+// 2. ENABLE CORS (Must be before Auth)
 app.UseCors(policy => policy
     .AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader());
+
+app.UseDefaultFiles(); // Serves index.html
+app.UseStaticFiles();  // Serves wwwroot content
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 app.Run();
-
-// --- MODELS ---
-public class User { public int Id { get; set; } public string Username { get; set; } = ""; public string PasswordHash { get; set; } = ""; }
-public class Todo { public int Id { get; set; } public string? Name { get; set; } public bool IsComplete { get; set; } public int UserId { get; set; } }
-public class TodoDb : DbContext {
-    public TodoDb(DbContextOptions<TodoDb> options) : base(options) { }
-    public DbSet<Todo> Todos => Set<Todo>();
-    public DbSet<User> Users => Set<User>();
-}

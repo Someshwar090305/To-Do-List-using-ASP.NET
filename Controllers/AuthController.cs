@@ -4,6 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using MyFirstApi.Data;
+using MyFirstApi.Models;
+using MyFirstApi.DTOs;
 
 namespace MyFirstApi.Controllers {
     [Route("api/[controller]")]
@@ -33,5 +36,4 @@ namespace MyFirstApi.Controllers {
             return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
     }
-    public class UserDto { public string Username { get; set; } = ""; public string Password { get; set; } = ""; }
 }

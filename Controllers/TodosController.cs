@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using MyFirstApi.Data;
+using MyFirstApi.Models;
+using MyFirstApi.DTOs;
 
 namespace MyFirstApi.Controllers {
     [Route("api/[controller]")]
@@ -19,8 +22,8 @@ namespace MyFirstApi.Controllers {
             await _db.Todos.Where(t => t.UserId == GetUserId()).ToListAsync();
 
         [HttpPost]
-        public async Task<ActionResult<Todo>> Create(string taskName) {
-            var t = new Todo { Name = taskName, IsComplete = false, UserId = GetUserId() };
+        public async Task<ActionResult<Todo>> Create([FromBody] CreateTodoDto dto) {
+            var t = new Todo { Name = dto.Name, IsComplete = false, UserId = GetUserId() };
             _db.Todos.Add(t);
             await _db.SaveChangesAsync();
             return Ok(t);

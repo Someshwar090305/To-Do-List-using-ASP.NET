@@ -1,0 +1,19 @@
+root = true
+
+# Global settings
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+# Enable StyleCop analyzer warnings for C# files
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.severity = warning
+
+# Recommended C# code style settings
+dotnet_sort_system_directives_first = true:suggestion
+dotnet_separate_import_directive_groups = true:suggestion
+
+# Optional: make all StyleCop warnings build errors
+# dotnet_diagnostic.category-StyleCop.CSharp.severity = error
